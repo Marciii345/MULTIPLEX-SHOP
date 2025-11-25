@@ -1,6 +1,9 @@
 # MULTIPLEX SHOP  
 Soluții Web Premium | Brand & Development
 
+SITE 
+https://multiplexmd.netlify.app/
+
 Bun venit în repository-ul oficial **MULTIPLEX SHOP**, proiect realizat de **Morari Marcel (Founder MULTIPLEX)**.  
 Acest site reprezintă o platformă modernă, rapidă și complet responsive, creată pentru prezentarea serviciilor MULTIPLEX în domeniul web design, branding, securitate digitală și automatizări inteligente (Discord/Telegram Bots).
 
