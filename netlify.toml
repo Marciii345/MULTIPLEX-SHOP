@@ -1,0 +1,15 @@
+[[plugins]]
+package = "@netlify/plugin-lighthouse"
+
+[[plugins]]
+package = "netlify-plugin-image-optim"
+
+    
+    [build.environment]
+     NODE_VERSION = "18"
+
+[context.deploy-preview]        
+  command = "npm run build-preview"
+
+  [[plugins]]
+package = "netlify-plugin-image-optim"

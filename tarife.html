@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarife - MULTIPLEX</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Styles from original page */
+        :root {
+            --night: #0f0f0f;
+            --night-light: #1a1a1a;
+            --white: #ffffff;
+            --accent: #cccccc;
+            --start: #4CAF50;
+            --standard: #FFC107;
+            --premium: #F44336;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--night);
+            color: var(--white);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            background: rgba(15, 15, 15, 0.9);
+        }
+
+        header.sticky {
+            padding: 15px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.05rem;
+            position: relative;
+            padding: 5px 0;
+            transition: var(--transition);
+        }
+
+        nav a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--white);
+            transition: var(--transition);
+        }
+
+        nav a:hover:after,
+        nav a.active:after {
+            width: 100%;
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section - Pricing Page */
+        .pricing-hero {
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
+                        url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+        }
+
+        .pricing-hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .pricing-hero h1 {
+            margin-bottom: 20px;
+        }
+
+        .pricing-hero p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1.05rem;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--white);
+            color: var(--night);
+            border: 2px solid var(--white);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--white);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
+        }
+
+        /* Pricing Tabs */
+        .pricing-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 50px;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 12px 30px;
+            border-radius: 30px;
+            background: var(--night-light);
+            color: var(--white);
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--white);
+            color: var(--night);
+        }
+
+         .pricing-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center; /* sau space-between / flex-start */
+            }
+
+
+        .pricing-card {
+            background: var(--night-light);
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            overflow: hidden;
+        }
+
+        .pricing-card.featured {
+            transform: scale(1.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .pricing-card.featured:before {
+            content: 'Recomandat';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--white);
+            color: var(--night);
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .package-badge {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 10px 20px;
+            border-radius: 0 0 15px 0;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .package-start .package-badge {
+            background: var(--start);
+            color: #fff;
+        }
+
+        .package-standard .package-badge {
+            background: var(--standard);
+            color: #000;
+        }
+
+        .package-premium .package-badge {
+            background: var(--premium);
+            color: #fff;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.8rem;
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: var(--white);
+        }
+
+        .price span {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .features-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+        }
+
+        .features-list li:before {
+            content: '\f00c';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            margin-right: 10px;
+            color: #4CAF50;
+        }
+
+        .pricing-card .btn {
+            width: 100%;
+        }
+
+        /* Additional Services */
+        .services-section {
+            background: var(--night-light);
+        }
+
+        .services-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 50px;
+        }
+
+        .services-table th, .services-table td {
+            padding: 15px 20px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .services-table th {
+            background: rgba(255, 255, 255, 0.05);
+            font-weight: 600;
+        }
+
+        .services-table tr:hover {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .service-icon {
+            width: 40px;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        /* Comparison Table */
+        .comparison-section {
+            overflow-x: auto;
+        }
+
+        .comparison-table {
+            width: 100%;
+            min-width: 800px;
+            border-collapse: collapse;
+            margin-top: 50px;
+        }
+
+        .comparison-table th, .comparison-table td {
+            padding: 15px 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .comparison-table th {
+            background: rgba(255, 255, 255, 0.05);
+            font-weight: 600;
+        }
+
+        .comparison-table .feature-name {
+            text-align: left;
+            font-weight: 500;
+        }
+
+        .comparison-table .yes {
+            color: #4CAF50;
+            font-size: 1.2rem;
+        }
+
+        .comparison-table .no {
+            color: #F44336;
+            font-size: 1.2rem;
+        }
+
+        /* FAQ Section */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .faq-item {
+            background: var(--night-light);
+            border-radius: 15px;
+            padding: 30px;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .faq-item:hover {
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .faq-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            background: linear-gradient(45deg, #1a1a1a, #0f0f0f);
+            border-radius: 20px;
+            padding: 60px;
+            margin-top: 80px;
+        }
+
+        .cta-section h2 {
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        /* Footer */
+        footer {
+            background: #080808;
+            padding: 80px 0 30px;
+            margin-top: 100px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .footer-col h4:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.7);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+            transform: translateX(5px);
+        }
+
+        .footer-links i {
+            width: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--night-light);
+            color: var(--white);
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .social-links a:hover {
+            background: var(--white);
+            color: var(--night);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.95rem;
+        }
+
+        /* New Contact Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            overflow: auto;
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            background-color: var(--night-light);
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+            animation: modalAppear 0.5s ease-out;
+        }
+        
+        @keyframes modalAppear {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: var(--accent);
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .close:hover {
+            color: var(--white);
+            transform: rotate(90deg);
+        }
+        
+        .modal-header {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .modal-header h2 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .modal-header .selected-package {
+            font-size: 1.8rem;
+            color: var(--accent);
+            font-weight: 700;
+            display: block;
+            margin-top: 5px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(15, 15, 15, 0.5);
+            color: var(--white);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(204, 204, 204, 0.2);
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .form-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+        }
+        
+        .form-footer .price-tag {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        
+        .btn-modal {
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+        }
+        
+        .btn-submit {
+            background: var(--accent);
+            color: var(--night);
+        }
+        
+        .btn-submit:hover {
+            background: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+        }
+        
+        .form-message {
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .form-message.success {
+            background: rgba(76, 175, 80, 0.2);
+            border: 1px solid rgba(76, 175, 80, 0.5);
+            color: #4CAF50;
+        }
+        
+        .form-message.error {
+            background: rgba(244, 67, 54, 0.2);
+            border: 1px solid rgba(244, 67, 54, 0.5);
+            color: #F44336;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            h1 {
+                font-size: 3rem;
+            }
+            
+            .pricing-grid {
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: var(--night);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 30px;
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            nav ul.active {
+                left: 0;
+            }
+            
+            .pricing-hero {
+                height: 50vh;
+            }
+            
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+            
+            .cta-section {
+                padding: 40px 20px;
+            }
+            
+            section {
+                padding: 70px 0;
+            }
+            
+            .form-footer {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .price {
+                font-size: 2.5rem;
+            }
+            
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                padding: 20px;
+            }
+            
+            .modal-header h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">MULTIPLEX</a>
+            <div class="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Acasă</a></li>
+                    <li><a href="portofoliu.html">Proiecte</a></li>
+                    <li><a href="despre noi.html">Despre Noi</a></li>
+                    <li><a href="tarife.html" class="active">Tarife</a></li>
+                    <li><a href="despre noi.html">Contacte</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section - Pricing Page -->
+    <section class="pricing-hero">
+        <div class="container">
+            <div class="pricing-hero-content">
+                <h1>Pachete & Tarife</h1>
+                <p>Soluții personalizate pentru fiecare nevoie și buget. Alege pachetul care se potrivește cel mai bine afacerii tale.</p>
+                <a href="#pachete" class="btn btn-primary">Vezi Pachetele</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Packages Section -->
+    <section id="pachete">
+        <div class="container">
+            <h2>Pachete Complete</h2>
+            <p>Toate pachetele includ design responsiv, optimizare SEO de bază și suport tehnic timp de 30 de zile.</p>
+            
+            <div class="pricing-tabs">
+                <button class="tab-btn active" data-category="all">Toate Pachetele</button>
+                <button class="tab-btn" data-category="site">Site-uri Web</button>
+                <button class="tab-btn" data-category="ecom">eCommerce</button>
+                <button class="tab-btn" data-category="speciale">Pachete Speciale</button>
+                <button class="tab-btn" data-category="altele">altele</button>
+            </div>
+            
+            <div class="pricing-grid">
+                <!-- START Package -->
+                <div class="pricing-card package-start" data-category="site">
+                    <div class="package-badge">START</div>
+                    <h3>Prezență Online</h3>
+                    <div class="price">99€</div>
+                    <ul class="features-list">
+                        <li>1 pagină tip landing page</li>
+                        <li>Prezentare servicii + contact</li>
+                        <li>Design adaptat culorilor firmei</li>
+                        <li>Formular de contact</li>
+                        <li>Integrare WhatsApp/Facebook</li>
+                        <li>Găzduire + domeniu (1 lună)</li>
+                    </ul>
+                    <button class="btn choose-package" data-package="Prezență Online" data-price="99€">Alege Pachetul</button>
+                </div>
+                
+                <!-- STANDARD Package -->
+                <div class="pricing-card package-standard featured" data-category="site">
+                    <div class="package-badge">STANDARD</div>
+                    <h3>Afaceri Locale</h3>
+                    <div class="price">199€</div>
+                    <ul class="features-list">
+                        <li>Până la 5 pagini</li>
+                        <li>Galerie foto</li>
+                        <li>Formular programare/ofertă</li>
+                        <li>Hartă Google Maps</li>
+                        <li>Optimizare SEO de bază</li>
+                        <li>Integrare social media</li>
+                        <li>Design responsive</li>
+                    </ul>
+                    <button class="btn btn-primary choose-package" data-package="Afaceri Locale" data-price="199€">Alege Pachetul</button>
+                </div>
+                
+                <!-- PREMIUM Package -->
+                <div class="pricing-card package-premium" data-category="site">
+                    <div class="package-badge">PREMIUM</div>
+                    <h3>Profesional</h3>
+                    <div class="price">349€</div>
+                    <ul class="features-list">
+                        <li>Până la 10 pagini + subpagini</li>
+                        <li>Design exclusiv cu animații</li>
+                        <li>CMS (Netlify/WordPress Light)</li>
+                        <li>Galerie video + slider</li>
+                        <li>SEO avansat</li>
+                        <li>Găzduire + mentenanță 6 luni</li>
+                        <li>Google Analytics</li>
+                    </ul>
+                    <button class="btn choose-package" data-package="Profesional" data-price="349€">Alege Pachetul</button>
+                </div>
+                
+                <!-- eCommerce Package -->
+                <div class="pricing-card" data-category="ecom">
+                    <h3>eCommerce</h3>
+                    <div class="price">499€</div>
+                    <ul class="features-list">
+                        <li>Până la 20 produse</li>
+                        <li>Coș de cumpărături</li>
+                        <li>Plăți online (Stripe/PayPal)</li>
+                        <li>Panou administrare produse</li>
+                        <li>Căutare + filtrare categorii</li>
+                        <li>Email automat la comandă</li>
+                        <li>SSL + hosting inclus</li>
+                    </ul>
+                    <button class="btn choose-package" data-package="eCommerce" data-price="499€">Alege Pachetul</button>
+                </div>
+                
+                <!-- Portofoliu Package -->
+                <div class="pricing-card" data-category="speciale">
+                    <h3>Portofoliu</h3>
+                    <div class="price">149€</div>
+                    <ul class="features-list">
+                        <li>Până la 4 pagini</li>
+                        <li>Slider/Galerie filtrabilă</li>
+                        <li>Design personalizat (light/dark)</li>
+                        <li>Integrare Instagram</li>
+                        <li>Formular de contact elegant</li>
+                        <li>Optimizare pentru imagini</li>
+                    </ul>
+                    <button class="btn choose-package" data-package="Portofoliu" data-price="149€">Alege Pachetul</button>
+                </div>
+                
+                <!-- Landing PRO Package -->
+                <div class="pricing-card" data-category="speciale">
+                    <h3>Landing PRO</h3>
+                    <div class="price">129€</div>
+                    <ul class="features-list">
+                        <li>Pagină unică lungă (scroll)</li>
+                        <li>Secțiuni: Descriere, Avantaje</li>
+                        <li>Recenzii, Galerie, CTA</li>
+                        <li>Timer, testimoniale animate</li>
+                        <li>Design responsive</li>
+                        <li>Viteză mare de încărcare</li>
+                    </ul>
+                    <button class="btn choose-package" data-package="Landing PRO" data-price="129€">Alege Pachetul</button>
+                </div>
+                
+                <!-- Corporate Package -->
+                <div class="pricing-card" data-category="site">
+                    <h3>Corporate</h3>
+                    <div class="price">699€</div>
+                    <ul class="features-list">
+                        <li>Structură până la 20 pagini</li>
+                        <li>Subsite-uri pentru filiale</li>
+                        <li>CMS avansat (WordPress custom)</li>
+                        <li>PDF-uri descărcabile</li>
+                        <li>Blog integrat</li>
+                        <li>Design sobru, business</li>
+                        <li>Securitate îmbunătățită</li>
+                    </ul>
+                    <button class="btn choose-package" data-package="Corporate" data-price="699€">Alege Pachetul</button>
+                </div>
+                
+                <!-- Tehnice Package -->
+                <div class="pricing-card" data-category="speciale">
+                    <h3>Tehnice PRO</h3>
+                    <div class="price">229€</div>
+                    <ul class="features-list">
+                        <li>Până la 6 pagini tehnice</li>
+                        <li>Prezentare servicii/abonamente</li>
+                        <li>Tabel comparativ funcții/prețuri</li>
+                        <li>Interfață dark modernă</li>
+                        <li>Formulare cu fișiere</li>
+                        <li>Sistem ticket suport</li>
+                    </ul>
+                    <button class="btn choose-package" data-package="Tehnice PRO" data-price="229€">Alege Pachetul</button>
+                </div>
+                
+                <!-- Educațional Package -->
+                <div class="pricing-card" data-category="speciale">
+                    <h3>Educațional</h3>
+                    <div class="price">249€</div>
+                    <ul class="features-list">
+                        <li>Pagini: Acasă, Despre, Programe</li>
+                        <li>Secțiune admitere</li>
+                        <li>Noutăți și anunțuri</li>
+                        <li>Calendar evenimente</li>
+                        <li>Galerie foto/video</li>
+                        <li>Documente PDF descărcabile</li>
+                        <li>Optimizare pentru elevi/părinți</li>
+                    </ul>
+                    <button class="btn choose-package" data-package="Educațional" data-price="249€">Alege Pachetul</button>
+                </div>
+                <div class="pricing-grid">
+                              
+                    <!-- DISCORD Package -->
+                    <div class="pricing-card package-discord" data-category="altele">
+                        <div class="package-badge" style="background-color: #7289da;">DISCORD</div>
+                        <h3>Bot Discord Personalizat</h3>
+                        <div class="price">De la 20€</div>
+                        <ul class="features-list">
+                            <li>Comenzi personalizate cu Discord.py sau Disnake</li>
+                            <li>Moderare automată și filtre anti-spam</li>
+                            <li>Gestionare roluri și permisiuni</li>
+                            <li>Trimitere mesaje automate și embed-uri personalizate</li>
+                            <li>Sisteme de welcome și goodbye pentru membri noi</li>
+                            <li>Reacții interactive și meniuri cu butoane</li>
+                            <li>Integrare cu baze de date și API-uri externe</li>
+                        </ul>
+                        <button class="btn choose-package" data-package="Bot Discord" data-price="20€">Alege Pachetul</button>
+                    </div>
+
+                    <!-- TELEGRAM Package -->
+                    <div class="pricing-card package-telegram" data-category="altele">
+                        <div class="package-badge" style="background-color: #0088cc;">TELEGRAM</div>
+                        <h3>Bot Telegram Personalizat</h3>
+                        <div class="price">De la 15€</div>
+                        <ul class="features-list">
+                            <li>Comenzi automate în Python sau Node.js</li>
+                            <li>Moderare chat și filtre anti-spam</li>
+                            <li>Trimitere notificări și alerte personalizate</li>
+                            <li>Gestionare grupuri și canale</li>
+                            <li>Suport pentru comenzi inline și butoane custom</li>
+                            <li>Mesaje de întâmpinare pentru noi membri</li>
+                            <li>Comenzi personalizate pentru necesitate</li>
+                        </ul>
+                        <button class="btn choose-package" data-package="Bot Telegram" data-price="15€">Alege Pachetul</button>
+                    </div>
+
+                    <!-- ADMIN PANEL Package -->
+                    <div class="pricing-card package-admin" data-category="altele">
+                        <div class="package-badge" style="background-color: #ff9800;">ADMIN PANEL</div>
+                        <h3>Admin Panel Personalizat</h3>
+                        <div class="price">de la 110€</div>
+                        <ul class="features-list">
+                            <li>Creată pentru orice platformă! </li>
+                            <li>Interfață intuitivă pentru control complet</li>
+                            <li>Gestionare utilizatori, permisiuni și conținut</li>
+                            <li>Dashboard cu statistici în timp real</li>
+                            <li>Export date și control asupra bazei de date</li>
+                            <li>Panou de moderare (ban, warn, logs etc.)</li>
+                            <li>Autentificare pe bază de roluri</li>
+                            <li>Comenzi personalizate pentru necesitate</li>
+                        </ul>
+                        <button class="btn choose-package" data-package="Admin Panel Personalizat" data-price="110€...">Alege Pachetul</button>
+                    </div>
+</div>
+
+    <!-- Additional Services Section -->
+    <section class="services-section">
+        <div class="container">
+            <h2>Servicii Suplimentare</h2>
+            <p>Completează-ți pachetul cu aceste servicii optionale pentru o experiență digitală completă.</p>
+            
+            <table class="services-table">
+                <thead>
+                    <tr>
+                        <th>Serviciu</th>
+                        <th>Descriere</th>
+                        <th>Preț</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><i class="fas fa-palette service-icon"></i> Creare logo</td>
+                        <td>Logo profesional și brand identity</td>
+                        <td>25 €</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-globe service-icon"></i> Traducere</td>
+                        <td>RO → RU / EN (multilingv)</td>
+                        <td>+30 € / limbă</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-lock service-icon"></i> Certificat SSL</td>
+                        <td>HTTPS + configurare</td>
+                        <td>15 €</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-server service-icon"></i> Găzduire</td>
+                        <td>Hosting dedicat lunar</td>
+                        <td>7 € / lună</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-envelope service-icon"></i> Email profesional</td>
+                        <td>Creare email (ex: contact@...)</td>
+                        <td>10 €</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-chart-line service-icon"></i> Optimizare SEO</td>
+                        <td>Avansat pentru motoare de căutare</td>
+                        <td>49 €</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-cogs service-icon"></i> Administrare</td>
+                        <td>Mentenanță și actualizări lunare</td>
+                        <td>de la 15 €/lună</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-share-alt service-icon"></i> Promovare social media</td>
+                        <td>Management și promovare</td>
+                        <td>de la 39 €/lună</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-chess service-icon"></i> Strategie branding</td>
+                        <td>Strategie completă de branding</td>
+                        <td>59 €</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-shield-alt service-icon"></i> Protecție + backup</td>
+                        <td>Securitate și backup zilnic</td>
+                        <td>12 €/lună</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Package Comparison Section -->
+    <section class="comparison-section">
+        <div class="container">
+            <h2>Comparație Pachete</h2>
+            <p>Vezi ce servicii sunt incluse în fiecare pachet pentru a alege cel mai potrivit.</p>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Caracteristică</th>
+                        <th>START</th>
+                        <th>STANDARD</th>
+                        <th>PREMIUM</th>
+                        <th>eCommerce</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="feature-name">Număr pagini</td>
+                        <td>1</td>
+                        <td>5</td>
+                        <td>10+</td>
+                        <td>Nelimitat</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">Design personalizat</td>
+                        <td><i class="fas fa-check yes"></i></td>
+                        <td><i class="fas fa-check yes"></i></td>
+                        <td><i class="fas fa-check yes"></i></td>
+                        <td><i class="fas fa-check yes"></i></td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">Galerie foto</td>
+                        <td><i class="fas fa-times no"></i></td>
+                        <td><i class="fas fa-check yes"></i></td>
+                        <td><i class="fas fa-check yes"></i></td>
+                        <td><i class="fas fa-check yes"></i></td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">Formular contact</td>
+                        <td><i class="fas fa-check yes"></i></td>
+                        <td><i class="fas fa-check yes"></i></td>
+                        <td><i class="fas fa-check yes"></i></td>
+                        <td><i class="fas fa-check yes"></i></td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">SEO de bază</td>
+                        <td><i class="fas fa-check yes"></i></td>
+                        <td><i class="fas fa-check yes"></i></td>
+                        <td><i class="fas fa-check yes"></i></td>
+                        <td><i class="fas fa-check yes"></i></td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">SEO avansat</td>
+                        <td><i class="fas fa-times no"></i></td>
+                        <td><i class="fas fa-times no"></i></td>
+                        <td><i class="fas fa-check yes"></i></td>
+                        <td><i class="fas fa-check yes"></i></td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">Sistem plată online</td>
+                        <td><i class="fas fa-times no"></i></td>
+                        <td><i class="fas fa-times no"></i></td>
+                        <td><i class="fas fa-times no"></i></td>
+                        <td><i class="fas fa-check yes"></i></td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">Găzduire inclusă</td>
+                        <td>1 lună</td>
+                        <td>3 luni</td>
+                        <td>6 luni</td>
+                        <td>1 an</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">Suport tehnic</td>
+                        <td>30 zile</td>
+                        <td>60 zile</td>
+                        <td>90 zile</td>
+                        <td>180 zile</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+   <!-- FAQ Section -->
+    <section>
+        <div class="container">
+            <h2>Întrebări Frecvente</h2>
+            <p>Răspunsuri la cele mai comune întrebări despre serviciile noastre.</p>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>Ce se întâmplă după ce aleg un pachet?</h3>
+                    <p>După ce alegi un pachet, un consultant te va contacta în maxim 24 de ore pentru a discuta detalii și a începe proiectul. Vei primi o estimare exactă a timpului de livrare.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Pot face modificări după livrare?</h3>
+                    <p>Da, oferim 30 de zile de suport gratuit pentru orice modificări minore. Pentru modificări majore, poți alege un abonament de mentenanță lunară.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Cât durează livrarea unui site?</h3>
+                    <p>Timpul de livrare variază în funcție de complexitate: de la 2 zile pentru un site simplu până la 3 săptămâni pentru soluții complexe. Vei primi o estimare exactă la început.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>De ce am nevoie pentru a începe?</h3>
+                    <p>Ai nevoie de conținutul pentru site (text, imagini), informațiile de contact și preferințele tale de design. Ne ocupăm noi de restul!</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Pot trece la un pachet superior?</h3>
+                    <p>Da, poți upgrada oricând la un pachet superior. Costul upgrade-ului va fi diferența dintre pachete, iar noi ne ocupăm de migrarea datelor.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Ce se întâmplă după perioada de găzduire gratuită?</h3>
+                    <p>Îți oferim mai multe opțiuni de găzduire, începând de la 7€/lună. Poți alege să migrezi site-ul sau să prelungim serviciul nostru de găzduire.</p>
+                </div>
+            </div>
+            
+            <!-- CTA Section -->
+            <div class="cta-section">
+                <h2>Gata să îți creezi prezența online?</h2>
+                <p>Indiferent de mărimea afacerii tale, avem soluția perfectă pentru tine. Contactează-ne acum pentru o consultație gratuită și ofertă personalizată.</p>
+                <a href="contacte.html" class="btn btn-primary">Solicită Ofertă</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>MULTIPLEX</h4>
+                    <p>Oferim soluții web complete, de la design la implementare și mentenanță, cu accent pe calitate și performanță.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Link-uri Rapide</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Acasă</a></li>
+                        <li><a href="servicii.html"><i class="fas fa-chevron-right"></i> Servicii</a></li>
+                        <li><a href="portofoliu.html"><i class="fas fa-chevron-right"></i> Proiecte</a></li>
+                        <li><a href="despre.html"><i class="fas fa-chevron-right"></i> Despre Noi</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Tarife</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Serviciile Noastre</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Creare Site-uri</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Securitate Digitală</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Design & Branding</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Suport Tehnic</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Magazin Online</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Chișinău, Moldova</p>
+                    <p><i class="fas fa-phone"></i> +373 677 5449</p>
+                    <p><i class="fas fa-envelope"></i> multiplex.md@gmail.com</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy;  2025 MULTIPLEX. Toate drepturile rezervate. | Soluții web premium pentru afaceri de succes.</p>
+            </div>
+        </div>
+    </footer>
+
+<!-- Package Selection Modal -->
+<div id="packageModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-header">
+            <h2>Ai ales pachetul: <span class="selected-package" id="packageTitle">Prezență Online</span></h2>
+            <p>Completează datele de contact pentru a iniția procesul.</p>
+        </div>
+        
+        <div class="form-message" id="formMessage"></div>
+        
+         <form
+              action="https://formspree.io/f/xqabjrgq"
+             method="POST"
+>
+            <!-- Câmpuri ascunse pentru Formspree -->
+            <input type="hidden" name="_subject" value="Cerere pachet [MULTIPLEX]">
+            <input type="hidden" name="_next" value="https://domeniultau.ro/multumesc.html"> <!-- Optional -->
+            
+            <!-- Câmpuri ascunse pentru pachet -->
+            <input type="hidden" name="package" id="selectedPackage">
+            <input type="hidden" name="price" id="selectedPrice">
+            
+            <div class="form-group">
+                <label for="name">Nume și Prenume</label>
+                <input type="text" id="name" name="name" required placeholder="Introdu numele complet">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Adresa de Email</label>
+                <input type="email" id="email" name="email" required placeholder="exemplu@email.com">
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Număr de Telefon</label>
+                <input type="tel" id="phone" name="phone" required placeholder="+373 6XX XXX XX">
+            </div>
+            
+            <div class="form-group">
+                <label for="message">Mesaj suplimentar (opțional)</label>
+                <textarea id="message" name="message" placeholder="Descrie nevoile tale sau întrebări..."></textarea>
+            </div>
+            
+            <div class="form-footer">
+                <div class="price-tag" id="modalPrice">99€</div>
+                <button type="submit" class="btn-modal btn-submit">Trimite solicitare</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+    <script>
+        // Sticky header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('sticky');
+            } else {
+                header.classList.remove('sticky');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const navMenu = document.querySelector('nav ul');
+        
+        mobileToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            this.querySelector('i').classList.toggle('fa-bars');
+            this.querySelector('i').classList.toggle('fa-times');
+        });
+
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+                mobileToggle.querySelector('i').classList.add('fa-bars');
+                mobileToggle.querySelector('i').classList.remove('fa-times');
+            });
+        });
+
+        // Pricing tabs functionality
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const pricingCards = document.querySelectorAll('.pricing-card');
+        
+        tabButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                const category = this.getAttribute('data-category');
+                
+                // Show/hide cards based on category
+                pricingCards.forEach(card => {
+                    if (category === 'all' || card.getAttribute('data-category') === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Package Selection Modal Functionality
+        const modal = document.getElementById('packageModal');
+        const closeModal = document.querySelector('.close');
+        const choosePackageButtons = document.querySelectorAll('.choose-package');
+        const packageTitle = document.getElementById('packageTitle');
+        const modalPrice = document.getElementById('modalPrice');
+        const selectedPackage = document.getElementById('selectedPackage');
+        const selectedPrice = document.getElementById('selectedPrice');
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+
+        // Open modal when package is selected
+        choosePackageButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const packageName = this.getAttribute('data-package');
+                const packagePrice = this.getAttribute('data-price');
+                
+                packageTitle.textContent = packageName;
+                modalPrice.textContent = packagePrice;
+                selectedPackage.value = packageName;
+                selectedPrice.value = packagePrice;
+                
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            });
+        });
+
+        // Close modal
+        closeModal.addEventListener('click', function() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Enable scrolling
+            formMessage.style.display = 'none'; // Hide any messages
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                formMessage.style.display = 'none';
+            }
+        });
+
+        // Form submission
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate phone number format
+            const phoneInput = document.getElementById('phone');
+            const phoneRegex = /^(\+373|0)\d{8}$/;
+            
+            if (!phoneRegex.test(phoneInput.value.trim())) {
+                showFormMessage('error', 'Te rog introdu un număr de telefon valid în format +37368010078');
+                return;
+            }
+            
+            // Show loading state
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+            submitButton.innerHTML = 'Se trimite... <i class="fas fa-spinner fa-spin"></i>';
+            
+            // In a real scenario, we would use AJAX to submit the form
+            // For this demo, we simulate a successful submission
+            setTimeout(() => {
+                showFormMessage('success', 'Solicitarea ta a fost trimisă cu succes! Te vom contacta în cel mai scurt timp.');
+                submitButton.disabled = false;
+                submitButton.innerHTML = 'Trimite solicitare';
+                
+                // Reset form after success
+                contactForm.reset();
+                
+                // Close modal after 3 seconds
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                    formMessage.style.display = 'none';
+                }, 3000);
+            }, 1500);
+        });
+
+        // Helper function to show form messages
+        function showFormMessage(type, message) {
+            formMessage.textContent = message;
+            formMessage.className = `form-message ${type}`;
+            formMessage.style.display = 'block';
+            
+            // Scroll to message
+            formMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body>
+</html>
